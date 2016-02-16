@@ -35,3 +35,6 @@
 /processorParam:TextureFormat=Color
 /build:softparticle.png
 
+#begin testmap.txt
+/copy:testmap.txt
+

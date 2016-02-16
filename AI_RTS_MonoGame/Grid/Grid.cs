@@ -27,7 +27,7 @@ namespace AI_RTS_MonoGame
         }
 
         public Grid(World world) {
-            using (StreamReader sr = new StreamReader("testmap.txt")) {
+            using (StreamReader sr = new StreamReader("Content/testmap.txt")) {
                 List<string> lines = new List<string>();
                 while (!sr.EndOfStream) {
                     lines.Add(sr.ReadLine());
