@@ -44,7 +44,7 @@ namespace AI_RTS_MonoGame.AI.FSM
             if(distance <= controller.ControlledUnit.AttackRange){
                 return FSMStates.Attack;
             }
-            else if (distance <= controller.ControlledUnit.VisionRange)
+            else if (gm.IsInSightRange(controller.AttackTarget, controller.ControlledUnit.Faction))
             {
                 return FSMStates.Chase;
             }

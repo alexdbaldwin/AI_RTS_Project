@@ -51,9 +51,9 @@ namespace AI_RTS_MonoGame
                 openSet.Remove(current);
                 closedSet.Add(current);
 
-
+                float dh = current.DistanceHeuristic(end);
                 if (current == end || current.DistanceHeuristic(end) <= goalTolerance)
-                    return ReconstructPath(end);
+                    return ReconstructPath(current);
 
                 foreach (Tile t in current.neighbours) {
                     if (closedSet.Contains(t))
@@ -84,7 +84,7 @@ namespace AI_RTS_MonoGame
 
                     t.cameFrom = newParent;
                     t.g = tentative_g;
-                    t.f = t.g + t.DistanceHeuristic(end);
+                    t.f = t.g + t.DistanceHeuristic(end) - goalTolerance;
 
                 }
                 openSet.Sort();

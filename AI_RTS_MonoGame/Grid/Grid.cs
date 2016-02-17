@@ -161,7 +161,7 @@ namespace AI_RTS_MonoGame
         }
 
 
-        public Path FindPath(int x1, int y1, int x2, int y2)
+        public Path FindPath(int x1, int y1, int x2, int y2, float goalTolerance = 0.0f)
         {
             if (Bounds.Contains(new Point(x1, y1)) && Bounds.Contains(new Point(x2, y2)))
             {
@@ -172,18 +172,19 @@ namespace AI_RTS_MonoGame
                     p.AddPoint(new Vector2(x2, y2));
                     return p;
                 }
-                return FindPath(tiles[x1, y1], tiles[x2, y2]);
+                return FindPath(tiles[x1, y1], tiles[x2, y2],goalTolerance);
             }
             return null;
         }
 
-        public Path FindPath(Tile start, Tile end)
+        public Path FindPath(Tile start, Tile end, float goalTolerance = 0.0f)
         { 
             ResetPathfinderInfo();
-            return pathfinder.FindPath(start, end);
+            return pathfinder.FindPath(start, end, goalTolerance);
         }
 
-        public Path FindPath(Vector2 start, Vector2 end) {
+        public Path FindPath(Vector2 start, Vector2 end, float goalTolerance = 0.0f)
+        {
             if (Bounds.Contains(new Point((int)start.X, (int)start.Y)) && Bounds.Contains(new Point((int)end.X, (int)end.Y)))
             {
                 if (LineOfSight(start,end))
@@ -193,7 +194,7 @@ namespace AI_RTS_MonoGame
                     p.AddPoint(end);
                     return p;
                 }
-                return FindPath(tiles[(int)(start.X / TileSize), (int)(start.Y / TileSize)], tiles[(int)(end.X / TileSize), (int)(end.Y / TileSize)]);
+                return FindPath(tiles[(int)(start.X / TileSize), (int)(start.Y / TileSize)], tiles[(int)(end.X / TileSize), (int)(end.Y / TileSize)],goalTolerance);
             }
             return null;
 

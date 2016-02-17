@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using AI_RTS_MonoGame.AI.Steering;
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,7 @@ namespace AI_RTS_MonoGame.AI.FSM
 
         public override void Enter()
         {
-            controller.ControlledUnit.SetVelocity(Vector2.Zero);
+            controller.SetSteering(new StandStill(gm, controller.ControlledUnit));
         }
         public override void Exit()
         {

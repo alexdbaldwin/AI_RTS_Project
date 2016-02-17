@@ -36,21 +36,33 @@ namespace AI_RTS_MonoGame
             armyController = new PlayerController(this, 0);
 
             SpawnUnit(new Vector2(150, 150), 0, UnitTypes.Ranged);
-            SpawnUnit(new Vector2(250, 150), 1, UnitTypes.Ranged);
-            SpawnUnit(new Vector2(252, 150), 1, UnitTypes.Melee);
+            SpawnUnit(new Vector2(250, 150), 0, UnitTypes.Ranged);
+            SpawnUnit(new Vector2(252, 150), 0, UnitTypes.Melee);
             SpawnUnit(new Vector2(290, 150), 0, UnitTypes.Melee);
             SpawnUnit(new Vector2(150, 170), 0, UnitTypes.Melee);
-            SpawnUnit(new Vector2(250, 170), 1, UnitTypes.Melee);
-            SpawnUnit(new Vector2(252, 170), 1, UnitTypes.Ranged);
+            SpawnUnit(new Vector2(250, 170), 0, UnitTypes.Melee);
+            SpawnUnit(new Vector2(252, 170), 0, UnitTypes.Ranged);
             SpawnUnit(new Vector2(290, 170), 0, UnitTypes.Ranged);
             SpawnUnit(new Vector2(150, 190), 0, UnitTypes.Ranged);
-            SpawnUnit(new Vector2(250, 190), 1, UnitTypes.Ranged);
-            SpawnUnit(new Vector2(252, 190), 1, UnitTypes.Ranged);
+            SpawnUnit(new Vector2(250, 190), 0, UnitTypes.Ranged);
+            SpawnUnit(new Vector2(252, 190), 0, UnitTypes.Ranged);
             SpawnUnit(new Vector2(290, 190), 0, UnitTypes.Ranged);
+            SpawnUnit(new Vector2(151, 650), 1, UnitTypes.Ranged);
+            SpawnUnit(new Vector2(251, 650), 1, UnitTypes.Ranged);
+            SpawnUnit(new Vector2(252, 650), 1, UnitTypes.Melee);
+            SpawnUnit(new Vector2(291, 650), 1, UnitTypes.Melee);
+            SpawnUnit(new Vector2(151, 670), 1, UnitTypes.Melee);
+            SpawnUnit(new Vector2(251, 670), 1, UnitTypes.Melee);
+            SpawnUnit(new Vector2(252, 670), 1, UnitTypes.Ranged);
+            SpawnUnit(new Vector2(291, 670), 1, UnitTypes.Ranged);
+            SpawnUnit(new Vector2(151, 690), 1, UnitTypes.Ranged);
+            SpawnUnit(new Vector2(250, 690), 1, UnitTypes.Ranged);
+            SpawnUnit(new Vector2(251, 690), 1, UnitTypes.Ranged);
+            SpawnUnit(new Vector2(291, 690), 1, UnitTypes.Ranged);
             SpawnBase(10,3, 0);
             SpawnBarracks(14, 6, 0);
 
-            SpawnBarracks(18, 8, 1);
+            SpawnBase(1, 1, 1);
             
         }
 
@@ -180,8 +192,9 @@ namespace AI_RTS_MonoGame
             return selected;
         }
 
-        public Path GetPath(Vector2 a, Vector2 b) {
-            return grid.FindPath(a, b);
+        public Path GetPath(Vector2 a, Vector2 b, float goalTolerance = 0.0f)
+        {
+            return grid.FindPath(a, b, goalTolerance);
         }
 
         public bool LineOfSight(Attackable a, Attackable b) {
