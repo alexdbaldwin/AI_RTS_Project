@@ -1,4 +1,5 @@
 ﻿using AI_RTS_MonoGame.AI.FSM;
+using AI_RTS_MonoGame.AI.Steering;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,7 @@ namespace AI_RTS_MonoGame
         Unit controlledUnit;
         GameplayManager gm;
         UnitFSM fsm;
+        SteeringBehaviour steering;
 
         public Path PathToFollow { get; set; }
         public Attackable AttackTarget { get; set; }
@@ -26,13 +28,17 @@ namespace AI_RTS_MonoGame
             controlledUnit = u;
             this.gm = gm;
             u.Controller = this;
-            fsm = new UnitFSM(this);
+            fsm = new UnitFSM(this,gm);
+            SetSteering(new StandStill(gm, u));
         }
 
         public void Detach() {
             controlledUnit = null;
         }
 
+        public void SetSteering(SteeringBehaviour sb) {
+            steering = sb;
+        }
         
 
         public void Update(GameTime gameTime) {
@@ -42,6 +48,8 @@ namespace AI_RTS_MonoGame
                 AttackTarget = null;
 
             fsm.Update(gameTime);
+            if(steering != null)
+                steering.Steer((float)gameTime.ElapsedGameTime.TotalSeconds);
         }
 
         public void AttackMove(Vector2 target) {

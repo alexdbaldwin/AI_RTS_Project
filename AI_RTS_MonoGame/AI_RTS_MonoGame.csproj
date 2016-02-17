@@ -48,6 +48,16 @@
     <Compile Include="AI\FSM\StateMove.cs" />
     <Compile Include="AI\FSM\UnitFSM.cs" />
     <Compile Include="AI\FSM\UnitFSMState.cs" />
+    <Compile Include="AI\Steering\Arrive.cs" />
+    <Compile Include="AI\Steering\BlendedChase.cs" />
+    <Compile Include="AI\Steering\BlendedFollowPath.cs" />
+    <Compile Include="AI\Steering\BlendedSteeringBehaviour.cs" />
+    <Compile Include="AI\Steering\Chase.cs" />
+    <Compile Include="AI\Steering\Clump.cs" />
+    <Compile Include="AI\Steering\FollowPath.cs" />
+    <Compile Include="AI\Steering\Separate.cs" />
+    <Compile Include="AI\Steering\StandStill.cs" />
+    <Compile Include="AI\Steering\SteeringBehaviour.cs" />
     <Compile Include="GameObjects\Attackables\Buildings\Barracks.cs" />
     <Compile Include="GameObjects\Attackables\Buildings\PowerPlant.cs" />
     <Compile Include="Unused\CollisionDetection\BoundingShapes.cs" />
@@ -110,6 +120,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AI\Planner\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
+    <None Include="ClassDiagram2.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />

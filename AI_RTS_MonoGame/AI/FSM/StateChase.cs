@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using AI_RTS_MonoGame.AI.Steering;
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,11 +9,11 @@ namespace AI_RTS_MonoGame.AI.FSM
 {
     class StateChase : UnitFSMState
     {
-        public StateChase(UnitController controller) : base(FSMStates.Chase, controller) { }
+        public StateChase(UnitController controller, GameplayManager gm) : base(FSMStates.Chase, controller, gm) { }
 
         public override void Enter()
-        { 
-        
+        {
+            controller.SetSteering(new Chase(gm, controller.ControlledUnit, controller.AttackTarget));
         }
         public override void Exit()
         {
@@ -20,11 +21,11 @@ namespace AI_RTS_MonoGame.AI.FSM
         }
         public override void Update(GameTime gameTime)
         {
-            controller.ControlledUnit.SetVelocity(Vector2.Zero);
+            //controller.ControlledUnit.SetVelocity(Vector2.Zero);
             
-            Vector2 dir = controller.AttackTarget.Position - controller.ControlledUnit.Position;
-            dir.Normalize();
-            controller.ControlledUnit.SetVelocity(dir * controller.ControlledUnit.MovementSpeed);
+            //Vector2 dir = controller.AttackTarget.Position - controller.ControlledUnit.Position;
+            //dir.Normalize();
+            //controller.ControlledUnit.SetVelocity(dir * controller.ControlledUnit.MovementSpeed);
 
         }
         public override void Init()

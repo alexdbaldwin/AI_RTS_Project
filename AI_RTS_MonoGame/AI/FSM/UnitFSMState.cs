@@ -8,9 +8,11 @@ namespace AI_RTS_MonoGame.AI.FSM
     abstract class UnitFSMState : FSMState
     {
         protected UnitController controller;
+        protected GameplayManager gm;
 
-        public UnitFSMState(FSMState.FSMStates type, UnitController controller) :base (type){
+        public UnitFSMState(FSMState.FSMStates type, UnitController controller, GameplayManager gm) :base (type){
             this.controller = controller;
+            this.gm = gm;
         }
 
     }

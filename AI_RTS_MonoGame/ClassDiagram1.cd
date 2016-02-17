@@ -1,0 +1,371 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="AI_RTS_MonoGame.AIController" Collapsed="true">
+    <Position X="0.5" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AI\Controllers\AIController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AI_RTS_MonoGame.ArmyController" Collapsed="true">
+    <Position X="1.75" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAIAAAEAAAAAAAAAAAAAAAAAAQABAAEAAAAA=</HashCode>
+      <FileName>AI\Controllers\ArmyController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AI_RTS_MonoGame.PlayerController" Collapsed="true">
+    <Position X="2.75" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAgAAAAAAAAAAAAAAAgAAAAAAQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AI\Controllers\PlayerController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AI_RTS_MonoGame.UnitController" Collapsed="true">
+    <Position X="21.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAIICQAEIAEAAAgAAAAIAAAAAAIIAAAAQAABA=</HashCode>
+      <FileName>AI\Controllers\UnitController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AI_RTS_MonoGame.Game1" Collapsed="true">
+    <Position X="18.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAEMAAAAAAA0AAAAAAAAAAAAAAAAgAAAAAAAAAAAQ=</HashCode>
+      <FileName>Game base\Game1.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AI_RTS_MonoGame.GameplayManager" Collapsed="true">
+    <Position X="20" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQCEAAABWIAAgARACgAAASAAAAiAgAIACAAAAAAgAA=</HashCode>
+      <FileName>Game base\GameplayManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AI_RTS_MonoGame.Attackable" Collapsed="true">
+    <Position X="4" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQIAAQACIAAQkAAAAAAEAAAQBEIQAAAQAAAQkAQAAA=</HashCode>
+      <FileName>GameObjects\Attackables\Attackable.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="AI_RTS_MonoGame.Barracks" Collapsed="true">
+    <Position X="0.75" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAIECAAIQAgAAAAAAAAAAAAg=</HashCode>
+      <FileName>GameObjects\Attackables\Buildings\Barracks.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AI_RTS_MonoGame.Base" Collapsed="true">
+    <Position X="3" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\Attackables\Buildings\Base.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AI_RTS_MonoGame.Building" Collapsed="true">
+    <Position X="3" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAQAAAIQAgQAQAAAAAAAAAAgABIAAAACABAQAAE=</HashCode>
+      <FileName>GameObjects\Attackables\Buildings\Building.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AI_RTS_MonoGame.DelayedDamage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEgAAAAIQAAAAAAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\Attackables\DelayedDamage.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AI_RTS_MonoGame.Unit" Collapsed="true">
+    <Position X="7.5" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgQDAAIEAYJCAgAABAAAmBAAAIhQAEAIBAEgEAQRAUA=</HashCode>
+      <FileName>GameObjects\Attackables\Units\Unit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AI_RTS_MonoGame.UnitFactory" Collapsed="true">
+    <Position X="14.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAIgAAAAAAAAEAAAA=</HashCode>
+      <FileName>GameObjects\Attackables\Units\UnitFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AI_RTS_MonoGame.GameObject" Collapsed="true">
+    <Position X="4" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAEAAIAAAAAgAgAAgAAAAAAQAAAABAAAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\GameObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AI_RTS_MonoGame.Grid" Collapsed="true">
+    <Position X="21.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAABAAAAAAAUgEAAiAAAAAAAgAAIIAAIAAAIBIAAgA=</HashCode>
+      <FileName>Grid\Grid.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AI_RTS_MonoGame.Path" Collapsed="true">
+    <Position X="20" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIACAACAQAAAABAAAAAAAAAAAggAAAAAAAAAAAAA=</HashCode>
+      <FileName>Grid\Path.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AI_RTS_MonoGame.Pathfinder" Collapsed="true">
+    <Position X="21.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAACAIAAAAAAAAAAABAAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Grid\Pathfinder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AI_RTS_MonoGame.Tile" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="20" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAgSAAAAAAAAAAAAAABIYAAACAAAAAAA=</HashCode>
+      <FileName>Grid\Tile.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AI_RTS_MonoGame.Program" Collapsed="true">
+    <Position X="18.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AI_RTS_MonoGame.CollisionDetection" Collapsed="true">
+    <Position X="18.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>Unused\CollisionDetection\CollisionDetection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AI_RTS_MonoGame.CollisionHandler" Collapsed="true">
+    <Position X="20" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Unused\CollisionDetection\CollisionHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AI_RTS_MonoGame.PathfindingNode" Collapsed="true">
+    <Position X="14.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYAAQAAAAAAAA=</HashCode>
+      <FileName>Unused\PathfindingNode.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AI_RTS_MonoGame.PriorityQueue&lt;T&gt;" Collapsed="true">
+    <Position X="16.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAAAAIAAAAAAAAABAAAAAAQAABAAAA=</HashCode>
+      <FileName>Unused\PriorityQueue.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AI_RTS_MonoGame.AssetManager" Collapsed="true">
+    <Position X="14.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAEAAAAAAAAAAAAAAAAgAAAAAAAQAABAQAAA=</HashCode>
+      <FileName>Utility\AssetManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AI_RTS_MonoGame.AttackableHelper" Collapsed="true">
+    <Position X="16.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAA=</HashCode>
+      <FileName>Utility\AttackableHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AI_RTS_MonoGame.DebugDraw" Collapsed="true">
+    <Position X="21.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAA=</HashCode>
+      <FileName>Utility\DebugDraw.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AI_RTS_MonoGame.Factions" Collapsed="true">
+    <Position X="16.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Utility\Faction.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AI_RTS_MonoGame.VectorMath" Collapsed="true">
+    <Position X="16.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAACIAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Utility\VectorMath.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AI_RTS_MonoGame.Particle" Collapsed="true">
+    <Position X="16.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAkAEAIAAIAAAAAABAAQAAAQAAkBAAAA=</HashCode>
+      <FileName>VFX\Particle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AI_RTS_MonoGame.ParticleEmitter" Collapsed="true">
+    <Position X="18.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgQAAoACAAAACkAmBAgAIAAAAIABBAUIAAEAgcBAAEA=</HashCode>
+      <FileName>VFX\ParticleEmitter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AI_RTS_MonoGame.ProjectileEffect" Collapsed="true">
+    <Position X="10.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAIAAAAAgAAIAAEAAAAAAAAAAAAAAQAAAAAAAA=</HashCode>
+      <FileName>VFX\ProjectileEffect.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AI_RTS_MonoGame.VisualEffect" Collapsed="true">
+    <Position X="10.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAIAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>VFX\VisualEffect.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AI_RTS_MonoGame.VisualEffectsManager" Collapsed="true">
+    <Position X="18.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAEAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>VFX\VisualEffectsManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AI_RTS_MonoGame.AI.FSM.FSM" Collapsed="true">
+    <Position X="0.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAhAAAIAAAAAAAAAAAAAEEAAAAAAAACAI=</HashCode>
+      <FileName>AI\FSM\FSM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AI_RTS_MonoGame.AI.FSM.FSMState" Collapsed="true">
+    <Position X="6.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAANAAAAIQACAAAAAAA=</HashCode>
+      <FileName>AI\FSM\FSMState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AI_RTS_MonoGame.AI.FSM.StateAttack" Collapsed="true">
+    <Position X="12.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAMAAAAIAACAAAAAAA=</HashCode>
+      <FileName>AI\FSM\StateAttack.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AI_RTS_MonoGame.AI.FSM.StateAttackMove" Collapsed="true">
+    <Position X="1" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAMAAAAIAACAAEAAgA=</HashCode>
+      <FileName>AI\FSM\StateAttackMove.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AI_RTS_MonoGame.AI.FSM.StateChase" Collapsed="true">
+    <Position X="3.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAMAAAAIAACAAAAAAA=</HashCode>
+      <FileName>AI\FSM\StateChase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AI_RTS_MonoGame.AI.FSM.StateHoldPosition" Collapsed="true">
+    <Position X="5.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAMAAAAIAACAAAAAAA=</HashCode>
+      <FileName>AI\FSM\StateHoldPosition.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AI_RTS_MonoGame.AI.FSM.StateIdle" Collapsed="true">
+    <Position X="7.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAMAAAAIAACAAAAAAA=</HashCode>
+      <FileName>AI\FSM\StateIdle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AI_RTS_MonoGame.AI.FSM.StateMove" Collapsed="true">
+    <Position X="10" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAMAAAAIAACAAEAAgA=</HashCode>
+      <FileName>AI\FSM\StateMove.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AI_RTS_MonoGame.AI.FSM.UnitFSM" Collapsed="true">
+    <Position X="0.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AI\FSM\UnitFSM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AI_RTS_MonoGame.AI.FSM.UnitFSMState" Collapsed="true">
+    <Position X="6.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AI\FSM\UnitFSMState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AI_RTS_MonoGame.AI.Steering.Arrive" Collapsed="true">
+    <Position X="8.5" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAYAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AI\Steering\Arrive.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AI_RTS_MonoGame.AI.Steering.FollowPath" Collapsed="true">
+    <Position X="8.5" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAACQAAAAAAAAAAAAAAAAAEAAgA=</HashCode>
+      <FileName>AI\Steering\FollowPath.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AI_RTS_MonoGame.AI.Steering.SteeringBehaviour" Collapsed="true">
+    <Position X="8.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgEAAAAAAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AI\Steering\SteeringBehaviour.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AI_RTS_MonoGame.GameObjects.Attackables.Buildings.PowerPlant" Collapsed="true">
+    <Position X="5.25" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\Attackables\Buildings\PowerPlant.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KeyMouseReader" Collapsed="true">
+    <Position X="14.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BBUCAAIABAAAAAEAAABQEAACAAAAAAAAIAAIAAFAAAA=</HashCode>
+      <FileName>Utility\KeyMouseReader.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="AI_RTS_MonoGame.BoundingCircle" Collapsed="true">
+    <Position X="14.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Unused\CollisionDetection\BoundingShapes.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="AI_RTS_MonoGame.CollisionResponse" Collapsed="true">
+    <Position X="16.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAAAAAAAAgAAAAAAgAAAAAAAAAAAAA=</HashCode>
+      <FileName>Unused\CollisionDetection\CollisionResponse.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Interface Name="AI_RTS_MonoGame.IAttackable" Collapsed="true">
+    <Position X="14.75" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAQAAIAAAAAgAAAAEAAAAAAIAAAAQAAAQAAQAAA=</HashCode>
+      <FileName>GameObjects\Attackables\IAttackable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="AI_RTS_MonoGame.UnitTypes" Collapsed="true">
+    <Position X="14.75" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACAAAAAAAAAAAAABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Game base\UnitTypes.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -8,7 +8,7 @@ namespace AI_RTS_MonoGame.AI.FSM
 {
     class StateHoldPosition : UnitFSMState
     {
-        public StateHoldPosition(UnitController controller) : base(FSMStates.HoldPosition, controller) { }
+        public StateHoldPosition(UnitController controller, GameplayManager gm) : base(FSMStates.HoldPosition, controller, gm) { }
 
         public override void Enter()
         {

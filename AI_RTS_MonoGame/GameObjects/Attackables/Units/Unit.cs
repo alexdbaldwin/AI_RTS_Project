@@ -25,6 +25,7 @@ namespace AI_RTS_MonoGame
         protected int attackDamage = 6;
         protected float productionTime = 10.0f;
         protected float cost = 100.0f;
+        protected float maxAcceleration = 50.0f; //????? Find a good value for this (and then make it a parameter)
 
 
         public float AttackRange { get { return attackRange; } }
@@ -32,6 +33,7 @@ namespace AI_RTS_MonoGame
         public int AttackDamage { get { return attackDamage; } }
         public float AttackDelay { get { return attackDelay; } }
         public float MovementSpeed { get { return movementSpeed; } }
+        public float MaxAcceleration { get { return maxAcceleration; } }
         public float ProductionTime { get { return productionTime; } set { productionTime = value; } }
         public float Cost { get { return cost; } }
 
@@ -78,6 +80,10 @@ namespace AI_RTS_MonoGame
 
         public void SetVelocity(Vector2 v) {
             body.LinearVelocity = v;
+        }
+
+        public Vector2 GetVelocity() {
+            return body.LinearVelocity;
         }
 
 

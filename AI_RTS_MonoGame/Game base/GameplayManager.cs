@@ -215,6 +215,15 @@ namespace AI_RTS_MonoGame
             return closest;
         }
 
+        public List<Attackable> GetAllFriendlyUnitsInRange(Unit u, float range) {
+            List<Attackable> friendly = new List<Attackable>();
+            foreach (Attackable a in attackables) {
+                if (a != u && a.Faction == u.Faction && AttackableHelper.Distance(u, a) <= range)
+                    friendly.Add(a);
+            }
+            return friendly;
+        }
+
         public bool IsInSightRange(Attackable a, int faction)
         {
 
