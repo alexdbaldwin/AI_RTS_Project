@@ -66,7 +66,14 @@ namespace AI_RTS_MonoGame.AI.FSM
         public override FSMStates CheckTransitions()
         {
             if (controller.AttackTarget == null)
+            {
+                if (controller.AttackMoving)
+                {
+                    controller.AttackMove(controller.AttackMoveDestination);
+                    return FSMStates.AttackMove;
+                }
                 return FSMStates.Idle;
+            }
 
             float distance = AttackableHelper.Distance(controller.ControlledUnit, controller.AttackTarget);
             if (distance <= controller.ControlledUnit.AttackRange)
@@ -79,6 +86,12 @@ namespace AI_RTS_MonoGame.AI.FSM
             }
             else if(!gm.IsInSightRange(controller.AttackTarget,controller.ControlledUnit.Faction))//Shouldn't happen unless vision range is lower than attack range
             {
+                if (controller.AttackMoving)
+                {
+                    controller.AttackMove(controller.AttackMoveDestination);
+                    return FSMStates.AttackMove;
+                }
+
                 return FSMStates.Idle;
             }
             return FSMStates.Chase;

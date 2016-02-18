@@ -12,6 +12,7 @@ namespace AI_RTS_MonoGame
 
         Rectangle selectionBox = new Rectangle();
         bool aPressed = false;
+        bool rPressed = false;
 
         public Rectangle SelectionBox {
             get {
@@ -36,7 +37,11 @@ namespace AI_RTS_MonoGame
             
             if (KeyMouseReader.LeftClickInPlace())
             {
-                if (aPressed) {
+                if (rPressed) { 
+                    Point p = Grid.Vector2ToGridPos(KeyMouseReader.mouseState.Position.ToVector2());
+                    gm.SpawnPowerPlant(p.X, p.Y, faction);
+                }
+                else if (aPressed) {
                     //A-move selected units
                     foreach (IAttackable s in selection)
                     {
@@ -58,8 +63,11 @@ namespace AI_RTS_MonoGame
                 selectionBox = new Rectangle();
             }
 
-            if (KeyMouseReader.LeftButtonReleased())
+            if (KeyMouseReader.LeftButtonReleased()) {
                 aPressed = false;
+                rPressed = false;
+            }
+                
 
             if (KeyMouseReader.KeyPressed(Keys.S)) { //Stop
                 foreach (IAttackable s in selection)
@@ -79,6 +87,11 @@ namespace AI_RTS_MonoGame
                 }
             }
 
+            if (KeyMouseReader.KeyPressed(Keys.R))
+            { //Attack
+                rPressed = true;
+            }
+
 
             //UGLY!!!
             if (KeyMouseReader.RightClick()) {
@@ -92,10 +105,16 @@ namespace AI_RTS_MonoGame
                     }
                 }
                 else {
+                    Path p = null;
+                    
                     foreach (IAttackable s in selection)
                     {
-                        if (s is Unit)
-                            (s as Unit).Controller.FollowPath(gm.GetPath((s as Unit).Position, KeyMouseReader.mouseState.Position.ToVector2()));
+                        if (s is Unit) {
+                            if(p == null)
+                                p = gm.GetPath(s.Position, KeyMouseReader.mouseState.Position.ToVector2());
+                            (s as Unit).Controller.FollowPath(p);
+                        }
+                            
                     }
                 }
 

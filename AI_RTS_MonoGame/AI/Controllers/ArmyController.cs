@@ -7,11 +7,17 @@ using System.Text;
 namespace AI_RTS_MonoGame
 {
 
-    abstract class ArmyController
+    internal abstract class ArmyController
     {
         protected GameplayManager gm;
         protected List<IAttackable> selection = new List<IAttackable>();
         protected int faction;
+        protected int resources = 100;
+
+        internal int Resources {
+            get { return resources; }
+            set { resources = value; }
+        }
 
         public int Faction {
             get {
@@ -28,6 +34,10 @@ namespace AI_RTS_MonoGame
 
         public virtual void Deselect(IAttackable s) {
             selection.Remove(s);
+        }
+
+        protected bool SpawnPowerPlant(int gridX, int gridY) {
+            return gm.SpawnPowerPlant(gridX, gridY, faction);
         }
 
 

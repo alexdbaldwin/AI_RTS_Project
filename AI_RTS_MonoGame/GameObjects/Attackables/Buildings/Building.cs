@@ -18,8 +18,8 @@ namespace AI_RTS_MonoGame
         protected Rectangle bounds;
         protected Grid grid;
 
-        public Building(GameplayManager gm, int gridX, int gridY, int faction, World world, int tileWidth, int tileHeight, int HP, float visionRange, Grid grid)
-            : base(gm, new Vector2(((float)gridX + (float)tileWidth / 2.0f) * Grid.TileSize, ((float)gridY + (float)tileHeight / 2.0f) * Grid.TileSize), faction, HP, visionRange, world)
+        public Building(GameplayManager gm, int gridX, int gridY, int faction, World world, int tileWidth, int tileHeight, int HP, float visionRange, int cost, Grid grid)
+            : base(gm, new Vector2(((float)gridX + (float)tileWidth / 2.0f) * Grid.TileSize, ((float)gridY + (float)tileHeight / 2.0f) * Grid.TileSize), faction, HP, visionRange, cost, world)
         {
             body = BodyFactory.CreateRectangle(world, ConvertUnits.ToSimUnits(tileWidth * Grid.TileSize), ConvertUnits.ToSimUnits(tileHeight * Grid.TileSize), 10, ConvertUnits.ToSimUnits(new Vector2(((float)gridX + (float)tileWidth / 2.0f) * Grid.TileSize, ((float)gridY + (float)tileHeight / 2.0f) * Grid.TileSize)));
             body.BodyType = BodyType.Static;

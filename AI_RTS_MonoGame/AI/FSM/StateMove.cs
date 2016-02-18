@@ -41,7 +41,7 @@ namespace AI_RTS_MonoGame.AI.FSM
         }
         public override FSMStates CheckTransitions()
         {
-            if (Vector2.Distance(controller.PathToFollow.GetPoint(controller.PathToFollow.PointCount()-1), controller.ControlledUnit.Position) < 1.0f) {
+            if (controller.HasArrived()) {
                 return FSMStates.Idle;
             }
 

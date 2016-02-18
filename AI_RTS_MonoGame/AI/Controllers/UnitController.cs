@@ -15,6 +15,9 @@ namespace AI_RTS_MonoGame
         UnitFSM fsm;
         SteeringBehaviour steering;
 
+        public bool AttackMoving { get; set; }
+        public Vector2 AttackMoveDestination { get; set; }
+
         public Path PathToFollow { get; set; }
         public Attackable AttackTarget { get; set; }
 
@@ -55,6 +58,18 @@ namespace AI_RTS_MonoGame
         public void AttackMove(Vector2 target) {
             PathToFollow = gm.GetPath(controlledUnit.Position, target);
             fsm.ChangeState(FSMState.FSMStates.AttackMove, true);
+            AttackMoving = true;
+            AttackMoveDestination = target;
+        }
+
+        /// <summary>
+        /// Checks if the controlled unit has reached the end of the path it is following
+        /// Strategy: increase distance tolerance if there are many units in the area
+        /// & check if the path "param" hasn't changed much in the past few seconds
+        /// </summary>
+        /// <returns></returns>
+        public bool HasArrived() {
+            return Vector2.Distance(PathToFollow.GetPoint(PathToFollow.PointCount() - 1), ControlledUnit.Position) < 1.0f;
         }
 
         public void Move() { 
@@ -64,11 +79,13 @@ namespace AI_RTS_MonoGame
         public void Attack(Attackable target) {
             AttackTarget = target;
             fsm.ChangeState(FSMState.FSMStates.Attack, true);
+            AttackMoving = false;
         }
 
         public void HoldPosition() {
             AttackTarget = null;
             fsm.ChangeState(FSMState.FSMStates.HoldPosition, true);
+            AttackMoving = false;
         }
 
         public void Stop() {
@@ -82,6 +99,7 @@ namespace AI_RTS_MonoGame
                 return;
             PathToFollow = path;
             fsm.ChangeState(FSMState.FSMStates.Move, true);
+            AttackMoving = false;
             //previousPathParam = 0;
         }
 

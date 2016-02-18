@@ -24,7 +24,6 @@ namespace AI_RTS_MonoGame
         protected float attackSpeed = 0.1f; //The amount of time between the attack being initiated and damage being applied
         protected int attackDamage = 6;
         protected float productionTime = 10.0f;
-        protected float cost = 100.0f;
         protected float maxAcceleration = 50.0f; //????? Find a good value for this (and then make it a parameter)
 
 
@@ -35,7 +34,7 @@ namespace AI_RTS_MonoGame
         public float MovementSpeed { get { return movementSpeed; } }
         public float MaxAcceleration { get { return maxAcceleration; } }
         public float ProductionTime { get { return productionTime; } set { productionTime = value; } }
-        public float Cost { get { return cost; } }
+        
 
        
 
@@ -45,8 +44,8 @@ namespace AI_RTS_MonoGame
             set;
         }
 
-        public Unit(GameplayManager gm, World world, Vector2 position, int faction, int HP, float radius, float attackRange, float aggroRange, float visionRange, int attackDamage, float attackDelay, float movementSpeed, float attackSpeed, float productionTime, float cost)
-            : base(gm, position, faction, HP, visionRange, world)
+        public Unit(GameplayManager gm, World world, Vector2 position, int faction, int HP, float radius, float attackRange, float aggroRange, float visionRange, int attackDamage, float attackDelay, float movementSpeed, float attackSpeed, float productionTime, int cost)
+            : base(gm, position, faction, HP, visionRange,cost, world)
         {
             this.attackRange = attackRange;
             this.aggroRange = aggroRange;

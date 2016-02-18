@@ -42,8 +42,11 @@ namespace AI_RTS_MonoGame.AI.FSM
         }
         public override FSMStates CheckTransitions()
         {
-            if (controller.PathToFollow == null)
+            if (controller.HasArrived()) {
+                controller.AttackMoving = false;
                 return FSMStates.Idle;
+            }
+                
 
             Attackable nearestTarget = controller.ControlledUnit.GetNearestTargetInAggroRange();
             if (nearestTarget != null)

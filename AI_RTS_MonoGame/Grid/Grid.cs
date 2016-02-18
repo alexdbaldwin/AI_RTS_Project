@@ -18,7 +18,9 @@ namespace AI_RTS_MonoGame
         public static float TileSize = 20.0f;
         Pathfinder pathfinder;
         List<Body> tileBodies = new List<Body>();
-
+        int factionIndex = 0;
+        World world;
+        GameplayManager gm;
 
         public Rectangle Bounds {
             get {
@@ -26,10 +28,25 @@ namespace AI_RTS_MonoGame
             }
         }
 
-        public Grid(World world) {
-            using (StreamReader sr = new StreamReader("Content/testmap.txt")) {
+        public Grid(World world, GameplayManager gm) {
+            this.world = world;
+            this.gm = gm;
+
+            pathfinder = new Pathfinder(this);
+
+        }
+
+        public Tile GetTile(int x, int y) {
+            return tiles[x, y];
+        }
+
+        public void LoadLevel()
+        {
+            using (StreamReader sr = new StreamReader("Content/testmap.txt"))
+            {
                 List<string> lines = new List<string>();
-                while (!sr.EndOfStream) {
+                while (!sr.EndOfStream)
+                {
                     lines.Add(sr.ReadLine());
                 }
                 xDimension = lines[0].Length;
@@ -39,26 +56,53 @@ namespace AI_RTS_MonoGame
                 {
                     for (int j = 0; j < yDimension; j++)
                     {
-                        tiles[i, j] = new Tile(i, j, new Rectangle((int)(i*TileSize),(int)(j*TileSize),(int)TileSize,(int)TileSize));
-                        if (lines[j][i] == '#')
+                        
+                        switch (lines[j][i])
                         {
-                            tiles[i, j].passable = false;
-                            Body body = BodyFactory.CreateRectangle(world, ConvertUnits.ToSimUnits(TileSize), ConvertUnits.ToSimUnits(TileSize), 10, ConvertUnits.ToSimUnits(GetWindowCenterPos(tiles[i, j])));
-                            body.BodyType = BodyType.Static;
-                            body.CollidesWith = Category.All;
-                            body.CollisionCategories = Category.All;
-                            tileBodies.Add(body);
+                            case '#':
+                                tiles[i, j] = new Tile(i, j, new Rectangle((int)(i * TileSize), (int)(j * TileSize), (int)TileSize, (int)TileSize));
+                                tiles[i, j].passable = false;
+                                Body body = BodyFactory.CreateRectangle(world, ConvertUnits.ToSimUnits(TileSize), ConvertUnits.ToSimUnits(TileSize), 10, ConvertUnits.ToSimUnits(GetWindowCenterPos(tiles[i, j])));
+                                body.BodyType = BodyType.Static;
+                                body.CollidesWith = Category.All;
+                                body.CollisionCategories = Category.All;
+                                tileBodies.Add(body);
+                                break;
+                            case 'r':
+                                tiles[i, j] = new ResourceTile(i, j, new Rectangle((int)(i * TileSize), (int)(j * TileSize), (int)TileSize, (int)TileSize),2000);
+                                tiles[i, j].resourceTile = true;
+                                break;
+                            case 's':
+                                tiles[i, j] = new Tile(i, j, new Rectangle((int)(i * TileSize), (int)(j * TileSize), (int)TileSize, (int)TileSize));
+                                break;
+                            default:
+                                tiles[i, j] = new Tile(i, j, new Rectangle((int)(i * TileSize), (int)(j * TileSize), (int)TileSize, (int)TileSize));
+                                break;
                         }
-                            
+
+                    }
+                }
+
+                //Go through again for spawning locations
+                for (int i = 0; i < xDimension; i++)
+                {
+                    for (int j = 0; j < yDimension; j++)
+                    {
+                        switch (lines[j][i])
+                        {
+                            case 's':
+                                gm.SpawnBase(i, j, factionIndex++);
+                                break;
+                            default:
+                                break;
+                        }
+
                     }
                 }
 
             }
 
             AssignNeighbours();
-
-            pathfinder = new Pathfinder(this);
-
         }
 
         public void AssignNeighbours()
@@ -157,9 +201,8 @@ namespace AI_RTS_MonoGame
             float startY = (start.gridY + 0.5f) * TileSize;
             float endX = (end.gridX + 0.5f) * TileSize;
             float endY = (end.gridY + 0.5f) * TileSize;
-            return LineOfSight(startX, startY, endX, endY);	        
+            return LineOfSight(startX, startY, endX, endY);
         }
-
 
         public Path FindPath(int x1, int y1, int x2, int y2, float goalTolerance = 0.0f)
         {
@@ -215,8 +258,8 @@ namespace AI_RTS_MonoGame
         public void Draw(SpriteBatch spriteBatch) {
             for (int i = 0; i < xDimension; i++) {
                 for (int j = 0; j < yDimension; j++) {
-                   
-                    spriteBatch.Draw(AssetManager.GetTexture("pixel"), new Rectangle((int)(i * TileSize), (int)(j * TileSize), (int)TileSize, (int)TileSize), tiles[i, j].passable ? Color.White : Color.Black);
+
+                    spriteBatch.Draw(AssetManager.GetTexture("pixel"), new Rectangle((int)(i * TileSize), (int)(j * TileSize), (int)TileSize, (int)TileSize), tiles[i, j].passable ? (tiles[i, j].resourceTile ? Color.LawnGreen : Color.White) : Color.Black);
                 }
             }
             //for(int i = 0; i < testPath.PointCount(); i++)
@@ -227,18 +270,9 @@ namespace AI_RTS_MonoGame
             
         }
 
-        //public CollisionResponse CollisionCheck(Unit u) {
-        //    foreach(Tile t in tiles) {
-        //        if (t.passable)
-        //            continue;
-        //        CollisionResponse cr = CollisionDetection.CollisionCheck(u.boundingCircle, t.bounds);
-        //        if (cr.collided)
-        //            return cr;
-        //    }
-        //    CollisionResponse result = new CollisionResponse();
-        //    result.collided = false;
-        //    return result;
-        //}
+        public static Point Vector2ToGridPos(Vector2 pos) {
+            return new Point((int)pos.X / (int)TileSize, (int)pos.Y / (int)TileSize);
+        }
 
         public Vector2 GetWindowCenterPos(Tile t) {
             return new Vector2((t.gridX + 0.5f) * TileSize, (t.gridY + 0.5f) * TileSize);

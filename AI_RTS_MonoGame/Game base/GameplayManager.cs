@@ -1,4 +1,5 @@
-﻿using FarseerPhysics;
+﻿using AI_RTS_MonoGame.GameObjects.Attackables.Buildings;
+using FarseerPhysics;
 using FarseerPhysics.Dynamics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -10,14 +11,14 @@ using System.Text;
 
 namespace AI_RTS_MonoGame
 {
-    class GameplayManager
+    internal class GameplayManager
     {
         public static readonly bool drawDebug = true;
 
 
         GameWindow window;
         Grid grid;
-        ArmyController armyController;
+        List<ArmyController> armyControllers = new List<ArmyController>();
         List<UnitController> controllers = new List<UnitController>();
         List<Attackable> attackables = new List<Attackable>();
         World world;
@@ -32,8 +33,9 @@ namespace AI_RTS_MonoGame
             vfx = new VisualEffectsManager();
 
             this.window = window;
-            grid = new Grid(world);
-            armyController = new PlayerController(this, 0);
+            grid = new Grid(world, this);
+            grid.LoadLevel();
+            armyControllers.Add(new PlayerController(this, 0));
 
             SpawnUnit(new Vector2(150, 150), 0, UnitTypes.Ranged);
             SpawnUnit(new Vector2(250, 150), 0, UnitTypes.Ranged);
@@ -46,23 +48,23 @@ namespace AI_RTS_MonoGame
             SpawnUnit(new Vector2(150, 190), 0, UnitTypes.Ranged);
             SpawnUnit(new Vector2(250, 190), 0, UnitTypes.Ranged);
             SpawnUnit(new Vector2(252, 190), 0, UnitTypes.Ranged);
-            SpawnUnit(new Vector2(290, 190), 0, UnitTypes.Ranged);
-            SpawnUnit(new Vector2(151, 650), 1, UnitTypes.Ranged);
-            SpawnUnit(new Vector2(251, 650), 1, UnitTypes.Ranged);
-            SpawnUnit(new Vector2(252, 650), 1, UnitTypes.Melee);
-            SpawnUnit(new Vector2(291, 650), 1, UnitTypes.Melee);
-            SpawnUnit(new Vector2(151, 670), 1, UnitTypes.Melee);
-            SpawnUnit(new Vector2(251, 670), 1, UnitTypes.Melee);
-            SpawnUnit(new Vector2(252, 670), 1, UnitTypes.Ranged);
-            SpawnUnit(new Vector2(291, 670), 1, UnitTypes.Ranged);
-            SpawnUnit(new Vector2(151, 690), 1, UnitTypes.Ranged);
-            SpawnUnit(new Vector2(250, 690), 1, UnitTypes.Ranged);
-            SpawnUnit(new Vector2(251, 690), 1, UnitTypes.Ranged);
-            SpawnUnit(new Vector2(291, 690), 1, UnitTypes.Ranged);
-            SpawnBase(10,3, 0);
-            SpawnBarracks(14, 6, 0);
+            //SpawnUnit(new Vector2(290, 190), 0, UnitTypes.Ranged);
+            //SpawnUnit(new Vector2(151, 650), 1, UnitTypes.Ranged);
+            //SpawnUnit(new Vector2(251, 650), 1, UnitTypes.Ranged);
+            //SpawnUnit(new Vector2(252, 650), 1, UnitTypes.Melee);
+            //SpawnUnit(new Vector2(291, 650), 1, UnitTypes.Melee);
+            //SpawnUnit(new Vector2(151, 670), 1, UnitTypes.Melee);
+            //SpawnUnit(new Vector2(251, 670), 1, UnitTypes.Melee);
+            //SpawnUnit(new Vector2(252, 670), 1, UnitTypes.Ranged);
+            //SpawnUnit(new Vector2(291, 670), 1, UnitTypes.Ranged);
+            //SpawnUnit(new Vector2(151, 690), 1, UnitTypes.Ranged);
+            //SpawnUnit(new Vector2(250, 690), 1, UnitTypes.Ranged);
+            //SpawnUnit(new Vector2(251, 690), 1, UnitTypes.Ranged);
+            //SpawnUnit(new Vector2(291, 690), 1, UnitTypes.Ranged);
+            //SpawnBase(10,3, 0);
+            //SpawnBarracks(14, 6, 0);
 
-            SpawnBase(1, 1, 1);
+            //SpawnBase(1, 1, 1);
             
         }
 
@@ -84,6 +86,21 @@ namespace AI_RTS_MonoGame
             
         }
 
+        public bool SpawnPowerPlant(int gridX, int gridY, int faction) {
+            if (grid.GetTile(gridX, gridY) is ResourceTile)
+            {
+                PowerPlant pp = new PowerPlant(this, gridX, gridY, faction, world, grid);
+                attackables.Add(pp);
+                return true;
+            }
+            return false;
+        }
+
+        public void GiveResources(int faction, int amount) {
+            foreach (ArmyController ac in armyControllers)
+                if (ac.Faction == faction)
+                    ac.Resources += amount;
+        }
 
         public void SpawnBase(int gridX, int gridY, int faction) {
             Base b = new Base(this, gridX, gridY, faction, world, grid);
@@ -113,7 +130,10 @@ namespace AI_RTS_MonoGame
 
         public void Update(GameTime gameTime) {
 
-            armyController.Update(gameTime);
+            foreach(ArmyController ac in armyControllers)
+                ac.Update(gameTime);
+
+            window.Title = "Player 1: " + armyControllers[0].Resources;
 
             for (int i = 0; i < attackables.Count; i++){
                 attackables[i].Update(gameTime);
@@ -125,7 +145,8 @@ namespace AI_RTS_MonoGame
                         (attackables[i] as Unit).Controller.Detach();
                         (attackables[i] as Unit).Controller = null;
                     }
-                    armyController.Deselect(attackables[i]);
+                    foreach(ArmyController ac in armyControllers)
+                        ac.Deselect(attackables[i]);
                     attackables[i].DestroyBody();
                     attackables.RemoveAt(i--);
                 }
@@ -153,7 +174,7 @@ namespace AI_RTS_MonoGame
                 }
             }
             vfx.Draw(spriteBatch);
-            DebugDraw.DrawRectangle(spriteBatch, (armyController as PlayerController).SelectionBox);
+            DebugDraw.DrawRectangle(spriteBatch, (armyControllers[0] as PlayerController).SelectionBox);
         }
 
         public IAttackable ClickSelect(Vector2 location, int faction) {

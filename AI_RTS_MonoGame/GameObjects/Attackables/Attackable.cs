@@ -19,7 +19,9 @@ namespace AI_RTS_MonoGame
         protected bool selected = false;
         protected float radius;
         protected float visionRange = 100.0f;
+        protected int cost = 100;
         public float VisionRange { get { return visionRange; } }
+        public int Cost { get { return cost; } }
 
         public float Radius
         {
@@ -31,12 +33,15 @@ namespace AI_RTS_MonoGame
             get { return faction; }
         }
 
-        public Attackable(GameplayManager gm, Vector2 position, int faction, int HP, float visionRange, World world) : base(world) {
+        public Attackable(GameplayManager gm, Vector2 position, int faction, int HP, float visionRange, int cost, World world)
+            : base(world)
+        {
             this.gm = gm;
             this.faction = faction;
             this.maxHP = HP;
             this.HP = HP;
             this.visionRange = visionRange;
+            this.cost = cost;
         }
 
         public virtual void DealDamage(int dmg, float delay = 0.0f)

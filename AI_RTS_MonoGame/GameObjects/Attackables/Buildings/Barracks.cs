@@ -16,7 +16,7 @@ namespace AI_RTS_MonoGame
         Queue<Unit> productionQueue = new Queue<Unit>();
 
         public Barracks(GameplayManager gm, int gridX, int gridY, int faction, World world, Grid grid)
-            : base(gm, gridX, gridY, faction, world, 2, 2, 500, 150.0f, grid)
+            : base(gm, gridX, gridY, faction, world, 2, 2, 500, 150.0f, 200, grid)
         { 
             
         }
